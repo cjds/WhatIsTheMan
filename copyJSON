@@ -1,0 +1,8 @@
+#!/bin/bash
+echo "start"
+cd ~/Development/classes/Advanced\ Image\ Recognition
+python vqa/PythonHelperTools/test.py --num 20000 --dataDir "vqa" --vqaDir "neuraltalk2"
+cp data.json neuraltalk2/coco/input.json
+python neuraltalk2/prepro.py --input_json neuraltalk2/coco/input.json --output_json neuraltalk2/coco/output.json --output_h5 neuraltalk2/coco/output.h5 --num_val 200 --num_test 20 --word_count_threshold 3 --images "/users/cjds/Development/classes/Advanced Image Recognition/neuraltalk2/" 
+
+python prepro.py --input_json coco/input.json --output_json test/output.json --output_h5 test/output.h5 --num_val 200 --num_test 20 --word_count_threshold 6 --images "/users/cjds/Development/classes/Advanced Image Recognition/neuraltalk2/" 
